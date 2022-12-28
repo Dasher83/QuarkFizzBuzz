@@ -51,6 +51,22 @@ namespace FizzBuzzKata
             Assert.Equal("Buzz", result);
             #endregion
         }
+        [Fact]
+        public void TestReturnFizzBuzz()
+        {
+            #region -- Arrange --
+            int numberDivisibleBy3And5 = GetNumberDivisibleBy3And5();
+            #endregion
+
+            #region -- Act --
+            //Expected -> "FizzBuzz"
+            string result = FizzBuzzCalculator.Check(numberDivisibleBy3And5);
+            #endregion
+
+            #region -- Assert --
+            Assert.Equal("FizzBuzz", result);
+            #endregion
+        }
 
         //Utils
         private int GetNumberNotDivisibleBy3Nor5()
@@ -61,7 +77,7 @@ namespace FizzBuzzKata
             do
             {
                 randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 3 == 0 && randomNumber % 5 == 0);
+            } while (randomNumber % 3 == 0 || randomNumber % 5 == 0);
 
             return randomNumber;
         }
@@ -74,7 +90,7 @@ namespace FizzBuzzKata
             do
             {
                 randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 3 != 0);
+            } while (randomNumber % 3 != 0 || randomNumber % 5 == 0);
 
             return randomNumber;
         }
@@ -87,7 +103,20 @@ namespace FizzBuzzKata
             do
             {
                 randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 5 != 0);
+            } while (randomNumber % 5 != 0 || randomNumber % 3 == 0);
+
+            return randomNumber;
+        }
+
+        private int GetNumberDivisibleBy3And5()
+        {
+            Random random = new Random();
+            int randomNumber;
+
+            do
+            {
+                randomNumber = random.Next(1, int.MaxValue);
+            } while (randomNumber % 3 != 0 || randomNumber % 5 != 0);
 
             return randomNumber;
         }
