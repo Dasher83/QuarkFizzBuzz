@@ -2,9 +2,13 @@
 {
     public class FizzBuzzCalculator
     {
-        public static int Check(int number)
+        public static string Check(int number)
         {
-            return number;
+            string result = number.ToString();
+
+            if (number % 3 == 0) result = "Fizz";
+            
+            return result;
         }
     }
 }
