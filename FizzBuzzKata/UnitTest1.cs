@@ -8,7 +8,7 @@ namespace FizzBuzzKata
         public void TestReturnSameNumber()
         {
             #region -- Arrange --
-            int numberNotDivisibleBy3Nor5 = GetNumberNotDivisibleBy3Nor5();
+            int numberNotDivisibleBy3Nor5 = TestUtilities.GetNumberNotDivisibleBy3Nor5();
             #endregion
 
             #region -- Act --
@@ -23,7 +23,7 @@ namespace FizzBuzzKata
         public void TestReturnFizz()
         {
             #region -- Arrange --
-                int numberDivisibleBy3 = GetNumberDivisibleBy3();
+                int numberDivisibleBy3 = TestUtilities.GetNumberDivisibleBy3();
             #endregion
 
             #region -- Act --
@@ -39,7 +39,7 @@ namespace FizzBuzzKata
         public void TestReturnBuzz()
         {
             #region -- Arrange --
-            int numberDivisibleBy5 = GetNumberDivisibleBy5();
+            int numberDivisibleBy5 = TestUtilities.GetNumberDivisibleBy5();
             #endregion
 
             #region -- Act --
@@ -55,7 +55,7 @@ namespace FizzBuzzKata
         public void TestReturnFizzBuzz()
         {
             #region -- Arrange --
-            int numberDivisibleBy3And5 = GetNumberDivisibleBy3And5();
+            int numberDivisibleBy3And5 = TestUtilities.GetNumberDivisibleBy3And5();
             #endregion
 
             #region -- Act --
@@ -66,59 +66,6 @@ namespace FizzBuzzKata
             #region -- Assert --
             Assert.Equal("FizzBuzz", result);
             #endregion
-        }
-
-        //Utils
-        private int GetNumberNotDivisibleBy3Nor5()
-        {
-            Random random = new Random();
-            int randomNumber;
-
-            do
-            {
-                randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 3 == 0 || randomNumber % 5 == 0);
-
-            return randomNumber;
-        }
-        
-        private int GetNumberDivisibleBy3()
-        {
-            Random random = new Random();
-            int randomNumber;
-
-            do
-            {
-                randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 3 != 0 || randomNumber % 5 == 0);
-
-            return randomNumber;
-        }
-
-        private int GetNumberDivisibleBy5()
-        {
-            Random random = new Random();
-            int randomNumber;
-
-            do
-            {
-                randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 5 != 0 || randomNumber % 3 == 0);
-
-            return randomNumber;
-        }
-
-        private int GetNumberDivisibleBy3And5()
-        {
-            Random random = new Random();
-            int randomNumber;
-
-            do
-            {
-                randomNumber = random.Next(1, int.MaxValue);
-            } while (randomNumber % 3 != 0 || randomNumber % 5 != 0);
-
-            return randomNumber;
         }
     }
 }
