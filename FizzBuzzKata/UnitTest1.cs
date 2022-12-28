@@ -35,7 +35,23 @@ namespace FizzBuzzKata
                 Assert.Equal("Fizz", result);
             #endregion
         }
-        
+        [Fact]
+        public void TestReturnBuzz()
+        {
+            #region -- Arrange --
+            int numberDivisibleBy5 = GetNumberDivisibleBy5();
+            #endregion
+
+            #region -- Act --
+            //Expected -> "Buzz"
+            string result = FizzBuzzCalculator.Check(numberDivisibleBy5);
+            #endregion
+
+            #region -- Assert --
+            Assert.Equal("Buzz", result);
+            #endregion
+        }
+
         //Utils
         private int GetNumberNotDivisibleBy3Nor5()
         {
@@ -59,6 +75,19 @@ namespace FizzBuzzKata
             {
                 randomNumber = random.Next(1, int.MaxValue);
             } while (randomNumber % 3 != 0);
+
+            return randomNumber;
+        }
+
+        private int GetNumberDivisibleBy5()
+        {
+            Random random = new Random();
+            int randomNumber;
+
+            do
+            {
+                randomNumber = random.Next(1, int.MaxValue);
+            } while (randomNumber % 5 != 0);
 
             return randomNumber;
         }
